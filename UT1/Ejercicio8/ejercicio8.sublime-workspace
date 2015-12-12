@@ -1,0 +1,241 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tran",
+				"translateWord〔function〕"
+			],
+			[
+				"desc",
+				"describe"
+			],
+			[
+				"pro",
+				"prompt〔function〕"
+			],
+			[
+				"s",
+				"script"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: test"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control:p",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio8/ejercicio8.sublime-project",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/index.html",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/test/js/test.cadenas.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/test/index.html",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/js/main.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/js/codificapalabra.js",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/PC69/AppData/Local/Temp/Temp1_html5-boilerplate_v5.2.0.zip/js/main.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/codificapalabra.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio7/test/codificapalabra.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio 28/test/js/test.prime.js",
+		"/C/Users/PC69/Desktop/prime/test/index.html",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio 28/JS/calculoDobleEdad.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio 28/index.html",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio 28/test/index.html",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio24/index.html",
+		"/C/Users/PC69/Desktop/Ejercicio1/index.html",
+		"/C/Users/PC69/Desktop/Ejercicio1/JS/javascript.js",
+		"/C/Users/PC69/Desktop/Ejercicio1/test/index.html",
+		"/C/Users/PC69/Desktop/Ejercicio1/test/js/test.prime.js",
+		"/C/Users/PC69/Desktop/prime/js/prime.js",
+		"/C/Users/PC69/Desktop/Ejercicio1/CSS/estilos.css",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/JSLint/Default.sublime-keymap",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/JSLint/JSLint.sublime-settings",
+		"/C/Users/PC69/Desktop/node_modules/mocha/index.js",
+		"/C/Users/PC69/Desktop/JS-UT1/Ejercicio24/JS/javascript.js",
+		"/C/Users/PC69/Desktop/prime/test/js/test.prime.js",
+		"/C/Users/PC69/Desktop/Ejercicio1/javascript.js",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/User/for.sublime-snippet",
+		"/C/Users/PC69/Desktop/hola.js",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/User/JSLint.sublime-settings",
+		"/C/Users/PC69/AppData/Roaming/Sublime Text 2/Packages/User/sublime-jslint.sublime-settings"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"traducePalabra",
+			"meteCadena",
+			"padre",
+			"hijo",
+			"aux",
+			"isPrime"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"translateWord",
+			"traducePalabra",
+			"edadPadre",
+			"edadHijo",
+			"salida",
+			"edad"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 259.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"output.jslint_result_view":
+	{
+		"height": 113.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

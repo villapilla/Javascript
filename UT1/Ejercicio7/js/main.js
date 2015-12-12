@@ -1,0 +1,1 @@
+alert(translateWord(prompt("Introduce el texto")));

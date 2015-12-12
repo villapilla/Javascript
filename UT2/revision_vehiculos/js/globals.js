@@ -1,0 +1,10 @@
+var MONTH_STRING = "janfebmaraprmayjunjulaugsepoctnovdec",
+    BUSINESS = new String("ABERCO|JUMDER|NOIRTE|OSPIA|SAIMTE"),
+    ERROR_NUMBERPLATE = "Número de matrícula incorrecto",
+    ERROR_LASTREVDATE = "Fecha de matriculación incorrecta",
+    MORNING_GREETING_MSG = "Buenos días",
+    EVENING_GREETING_MSG = "Buenas tardes",
+    NIGHT_GREETING_MSG = "Buenas noches",
+    NO_INSPECTION_MSG = "Su vehículo no necesita revisión",
+    INSPECTION_MSG_PRE = "Debe ponerse en contacto con ",
+    INSPECTION_MSG_SUF = " para revisar su vehículo";

@@ -1,0 +1,31 @@
+main {
+    max-width: 960px;
+    margin: auto;
+    font-family: "Verdana";
+}
+#saludo {
+    text-align: center;
+    font-size: 2.5em;
+}
+article {
+    height: 200px;
+}
+#contacto {
+    position: relative;
+    top: 35%;
+    text-align: center;
+    font-size: 1.5em;
+}
+#sistema::before {
+    content: "";
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 2px;
+    border: solid 2px grey;
+    background-color: #7BAEF7
+}
+
+#sistema {
+    color: #0D469F;
+}

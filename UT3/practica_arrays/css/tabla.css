@@ -1,0 +1,39 @@
+body {
+    padding: 50px;
+}
+main {
+    background-color: beige;
+    min-height: 2000px;
+    max-height: 2000px;
+    width: 900px; 
+}
+input {
+    margin: 20px;
+    
+}
+td {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: solid 1px;
+    text-align: center;
+    background-color: blue;
+}
+.anchoCompleto {
+    height: 40px;
+    width: 1000px;
+}
+td:first-child {
+    background-color:  beige;
+    border: none;
+}
+
+td:first-child {
+    transform: rotate(90deg);
+    text-align: bottom;
+    vertical-align: middle;
+}
+table {
+    transform: rotate(-90deg) translate(-0px,300px);
+    border-collapse: collapse;
+}

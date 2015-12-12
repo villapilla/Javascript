@@ -1,0 +1,19 @@
+fieldset {
+    width: 70%;
+    margin: auto;
+    border: none;
+    font-size: 2em;
+}
+form {
+    width: 45%;
+}
+label {
+    margin-left: 20px;
+    width: 35%;
+    font-size: 0.6em;
+}
+input {
+    position: relative;
+    top: 13px;
+    float: right;
+}
