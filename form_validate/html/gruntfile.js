@@ -33,6 +33,14 @@ module.exports = function (grunt) {
                 }
             }
         },
+        markdown: {
+            all: {
+                expand: true,
+                src: 'README.md',
+                dest: 'doc/',
+                ext: '.html'
+            }
+        },
         uglify: {
             my_target: {
                 files: {
@@ -44,7 +52,7 @@ module.exports = function (grunt) {
         watch: {
             javascript: {
                 files: ['<%= jslint.src %>'],
-                tasks: ['jslint']
+                tasks: ['jslint', 'mochaTest']
             },
             styles: {
                 files: ['less/*.less'],
@@ -52,10 +60,6 @@ module.exports = function (grunt) {
                 options: {
                     nospawn: true
                 }
-            },
-            mochaTest: {
-                files: ['<%= mochaTest.test.src %>'],
-                tasks: ['mochaTest']
             },
             markdown: {
                 files: ['<%= markdown.all.src %>'],
@@ -67,6 +71,7 @@ module.exports = function (grunt) {
             }
         }
     });
+
     grunt.registerTask('test', ['jslint']);
     grunt.registerTask('default', ['jslint', 'less', 'markdown', 'uglify']);
 };
