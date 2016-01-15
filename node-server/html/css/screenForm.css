@@ -58,7 +58,7 @@ main .box_form .form_input select {
   font-size: 1.5em;
 }
 main .box_form .form_input input:required {
-  background: #FFFFFF url(../img/red_asterix.gif) no-repeat 98% center;
+  background: #FFFFFF url(../img/red_asterix.png) no-repeat 98% center;
 }
 main .box_form .form_input input:focus,
 main .box_form .form_input textarea:focus,
