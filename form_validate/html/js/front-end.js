@@ -67,6 +67,28 @@ function removeFirstWhite() {
     this.removeChild(this.firstChild);
     this.removeEventListener("change", removeFirstWhite, false);
 }
+function validateInput(regExp, input) {
+    var checkClass;
+    if (input === "") {
+        checkClass = "reset";
+    } else {
+        if(regExp.test(input)) {
+            checkClass = "valid";
+        } else {
+            checkClass = "invalid";
+        }
+    }
+    return checkClass;
+}
+
+function validateName() {
+    var newClass = validateInput(globals.LAST_NAME_REG_EXP, this.value);
+    this.className = newClass;
+}
+function validatePass() {
+    var newClass = validateInput(globals.PASS_REG_EXP, this.value);
+    this.className = newClass;
+}
 window.onload = function () {
     //var input_box = [$("name_error"), $("email_error"), $("pass_error"), $("confirm_error"), $("url_error"), $("address_error"), $("name_error"), $("country_error")]
     createError("name_error", globals.ERR_LAST_NAME);
@@ -77,4 +99,11 @@ window.onload = function () {
     createError("address_error", globals.ERR_ADDRESS);
     $("select_country").addEventListener("change", removeFirstWhite, false);
     buildSelect("select_country", globals.COUNTRIES, "", ChooseCountry);
+    $("name").addEventListener("keyup", validateName, false);
+    $("password").addEventListener("keyup", validatePass, false);
+    //$("name_error").addEventListener("keyup", validateInput, false);
+    //$("name_error").addEventListener("keyup", validateInput, false);
+    //$("name_error").addEventListener("keyup", validateInput, false);
+
 };
+
