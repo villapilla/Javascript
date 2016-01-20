@@ -49,25 +49,52 @@ main {
                 vertical-align: middle;
                 font-size: 1.5em;
             }
-            input:required {
-                background: #FFFFFF url(../img/red_asterix.gif) no-repeat 98% center;
-            }
+            
             input:focus, textarea:focus, select:focus {
                 background: #FFFFFF; 
                 background-image: none; 
                 border:1px solid #3B87FD; 
                 box-shadow: 0 0 3px #AAAAAA; 
             }
-            
-            .invalid {
+            input:required {
+                background: #FFFFFF url(../img/red_asterix.gif) no-repeat 98% center;
+            }
+            input:invalid {
                 background: #FFFFFF url(../img/invalid.png) no-repeat 98% center;
                 box-shadow: 0 0 5px #d45252;
                 border-color: #b03535;
             }
-            .valid {
+            input:valid {
                 background: #FFFFFF url(../img/valid.png) no-repeat 98% center;
                 box-shadow: 0 0 5px #5CD053;
                 border-color: #28921F;
+            }
+            #required{
+                display: inline-block;
+            }
+            .error {
+                position: absolute;
+                width: 30%;
+                padding: 1%;
+                color: red;
+                border: solid 1px;
+                border-radius: 10px;
+                background: white;
+                left: 69%;
+                top: 30%;
+                line-height: 90%;
+                width: 44%;
+                display: none;
+            }
+            .visible {
+                display: inline-block;
+            }
+            .no_display {
+                display: none;
+                
+            }
+            #post_code {
+                list-style-image: none;
             }
             textarea {
                 width: 85%;
