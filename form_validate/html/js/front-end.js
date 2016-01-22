@@ -10,15 +10,15 @@
 */
 'use strict';
 var globals = (function (ns) {
-    ns.ERR_LAST_NAME = "Debes introducir tu nombre y al menos un apellido";
-    ns.ERR_EMAIL = "Debes introducir un correo valido";
+    ns.ERR_LAST_NAME = "Debe introducir tu nombre y al menos un apellido";
+    ns.ERR_EMAIL = "Debe introducir un correo valido";
     ns.ERR_PASS = "La contraseña debe tener al menos seis caracteres y una " +
         "letra mayúscula, una letra minúscula, un número y un símbolo";
     ns.ERR_CONF_PASS = "La confirmación y la contraseña deben coincidir";
-    ns.ERR_URL = "Debes introducir una URL válida";
-    ns.ERR_ADDRESS = "Debes introducir una dirección válida";
-    ns.ERR_COUNTRY = "Debes seleccionar un pais válido";
-    ns.ERR_POST_CODE = "Debes introducir un codigo postal válido";
+    ns.ERR_URL = "Debe introducir una URL válida";
+    ns.ERR_ADDRESS = "Debe introducir una dirección válida";
+    ns.ERR_COUNTRY = "Debe seleccionar un pais válido";
+    ns.ERR_POST_CODE = "Debe introducir un código postal válido";
     ns.COUNTRIES = ["España", "Francia", "Portugal", "Italia", "Alemania"];
     ns.SPAIN = ns.COUNTRIES[0];
     ns.LAST_NAME_REG_EXP = /^[a-zñ\-\'\.]+(?:\s[a-zñ\-\'\.]+)+$/i;
@@ -129,7 +129,7 @@ function validatePostCode() {
     var newClass = validateInput(globals.POST_CODE_REG_EXP, this.value);
     this.className = newClass;
 }
-function sendForm(e) {
+function sendForm() {
     var input; 
     validateForm();
     input = document.getElementsByClassName("invalid");

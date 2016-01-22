@@ -5,6 +5,7 @@ var http = require('http'),
     mime = require('mime-types');
 //Lets define a port we want to listen to
 const PORT=8080;
+
 function randomString(numChar) {
     return Array(numChar).fill(0).reduce(function (x ,y) {
         return x + String.fromCharCode(97 + Math.floor(Math.random()*26));
@@ -79,11 +80,12 @@ dispatcher.onGet("/", function(req, res) {
 dispatcher.onGet(/.(css|js|jpg|png|gif|ttf)$/, function(req, res) { 
     readData(req, res, mime.lookup(req.url), "../html" + req.url);
 });
-dispatcher.onPost("/registro", function(req, res) {
+
+dispatcher.onPost("/", function(req, res) {
     var StringRequest = JSON.stringify(req.params);
     createData(StringRequest);
     fs.readFile("../html/index.html", function (err, data){
-        res.writeHead(200, {"Content-Type": "text/html", "Content-Length":data.length, "Set-Cookie" : "Register_user=true"});
+        res.writeHead(200, {"Content-Type": "text/html", "Content-Length":data.length});
         res.write(data);
         res.end();
     });
