@@ -22,7 +22,7 @@
 
 @font-face {
     font-family: "letrasLogo";
-    src: url("../font/01 Digitall.ttf");
+    src: url("../font/Digitall.ttf");
 }
 @font-face {
     font-family: "textoWeb";
@@ -188,6 +188,16 @@ main {
             border-top: 3px solid #918F8F;
             padding-top: 3%;
         }
+        #error {
+            background: #F2C6C6;
+            color: red;
+            font-size: 2em;
+            text-align: center;
+            vertical-align: middle;
+            h2 {
+                padding: 0 0 2%;
+            }
+        }
         .form_input {
             display: block;
             width: 90%;
@@ -212,22 +222,15 @@ main {
                 vertical-align: middle;
                 font-size: 1.5em;
             }
-            
-            /*input:focus, textarea:focus, select:focus {
-                background: #FFFFFF; 
-                background-image: none; 
-                border:1px solid #3B87FD; 
-                box-shadow: 0 0 3px #AAAAAA; 
-            }*/
-            .required {
+            input:required {
                 background: #FFFFFF url(../img/red_asterix.gif) no-repeat 98% center;
             }
-            .invalid {
+            input.invalid {
                 background: #FFFFFF url(../img/invalid.png) no-repeat 98% center;
                 box-shadow: 0 0 5px #d45252;
                 border-color: #b03535;
             }
-            .valid {
+            input.valid {
                 background: #FFFFFF url(../img/valid.png) no-repeat 98% center;
                 box-shadow: 0 0 5px #5CD053;
                 border-color: #28921F;
@@ -252,18 +255,18 @@ main {
             .visible {
                 display: inline-block;
             }
-            .no_display {
-                display: none;
-                
-            }
             #post_code {
                 list-style-image: none;
+                display: none;
+                padding: 0;
+                margin: 0;
             }
+
             textarea {
                 width: 85%;
                 height: 100px;
             }
-            .submit {
+            .send {
                 font-size: 1.5em;
                 background-color: #68B12F;
                 background: gradient(linear, left top, left bottom, from(#68B12F), to(#50911E));
@@ -280,14 +283,18 @@ main {
                 text-align: center;
                 text-shadow: 0 -1px 0 #396715;
             }
-            .submit:hover {
+            .send:hover {
                 opacity:.85;
                 cursor: pointer; 
             }
-            .submit:active {
+            .send:active {
                 border: 1px solid #20911E;
                 box-shadow: 0 0 10px 5px #356b0b inset; 
             }
+        }
+        .no_display {
+            display: none;
+            list-style: none;
         }
     }
 }

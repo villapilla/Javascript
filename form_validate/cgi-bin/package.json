@@ -1,0 +1,25 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "Simple node http server",
+  "main": "server.js",
+  "dependencies": {
+    "httpdispatcher": "^0.4.0",
+    "mime-types": "^2.1.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/villapilla/Javascript.git"
+  },
+  "author": "David Villaluenga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/villapilla/Javascript/issues"
+  },
+  "homepage": "https://github.com/villapilla/Javascript#readme"
+}

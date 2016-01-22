@@ -65,15 +65,19 @@
                 <section class="box_form">
                     <h1 class="title_form">Registro de usuarios</h1>
                     <h2 class="subtitle_form">* Campos obligatorios<h2> 
-                    <form action="/" method="POST" id="form">
+                    <form action="/registro" method="POST" id="form">
+                             <li id="error" class="form_input no_display">
+                                <h2>Hay algunos errores en tus datos</h2>
+                                <div class ="error" id="name_error"></div>
+                            </li>
                             <li class="form_input">
                                 <label for="name_and_last">Nombre y Apellidos:</label>
-                                <input name="name_and_last" title="Debes introducir tu nombre y al menos un apellido" type="text" id="name" required pattern="[a-zA-Z0-9]+">
+                                <input name="name_and_last" title="Debes introducir tu nombre y al menos un apellido" type="text" id="name" required>
                                 <div class ="error" id="name_error"></div>
                             </li>
                             <li class="form_input">
                                 <label for="email">Correo electrónico:</label>
-                                <input name="email" type="email" required>
+                                <input id="email" name="email" type="email" required>
                                 <div class ="error" id="email_error"></div>
                             </li>
                             <li class="form_input">
@@ -83,24 +87,27 @@
                             </li>
                             <li class="form_input">
                                 <label for="confirm_password">Confirmar contraseña:</label>
-                                <input name="confirm_password" type="password" required>
+                                <input id="confirm" name="confirm_password" type="password" required>
                                 <div class ="error" id="confirm_error"></div>
                             </li>
                             <li class="form_input">
-                                <label for="URL">Dirección Web:</label>
-                                <input name = "URL" type="url" class="invalid">
+                                <label for="URL">URL:</label>
+                                <input name = "URL" type="url" id="url">
                                 <div class ="error" id="url_error"></div>
                             </li>
                             <li class="form_input">
                                 <label for="address">Dirección:</label>
-                                <input name="address" type="text" class="valid">
+                                <input name="address" id="address" type="text">
                                 <div class ="error" id="address_error"></div>
                             </li>
                             <li class="form_input">
                                 <label for="coutry">Selecciona tu País:</label>
-                                <select name="country" id="select_country"></select>
+                                <select name="country" id="select_country" list="select_country"></select>
                             </li>
-                            <li class="no_display" id="post_code"></li>
+                            <li class="no_display" id="post_code">
+                                <label for="post-code">Codigo Postal:</label>
+                                <input type="text" name="post-code" id="code">
+                            </li>
                             <li class="form_input" id="form_comments">
                                 <label for="comments">Comentarios:</label>
                                 <textarea name="comments"></textarea>
@@ -111,7 +118,7 @@
                                 <div id="required"><img src="img/red_asterix.gif" height="12" width="12"></div>
                             </li>
                             <li class="form_input">
-                                <button name="send" class="submit" type="submit">Enviar</button>
+                                <button name="send" type="none" class="send" id="send">Enviar</button>
                             </li>
                         </ul>
                     </form>

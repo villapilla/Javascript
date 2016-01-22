@@ -19,7 +19,7 @@
 }
 @font-face {
   font-family: "letrasLogo";
-  src: url("../font/01 Digitall.ttf");
+  src: url("../font/Digitall.ttf");
 }
 @font-face {
   font-family: "textoWeb";
@@ -184,6 +184,16 @@ main .box_form .form_input:last-child {
   border-top: 3px solid #918F8F;
   padding-top: 3%;
 }
+main .box_form #error {
+  background: #F2C6C6;
+  color: red;
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+}
+main .box_form #error h2 {
+  padding: 0 0 2%;
+}
 main .box_form .form_input {
   display: block;
   width: 90%;
@@ -191,12 +201,6 @@ main .box_form .form_input {
   border-bottom: 1px solid #EEEEEE;
   position: relative;
   padding: 12px;
-  /*input:focus, textarea:focus, select:focus {
-                background: #FFFFFF; 
-                background-image: none; 
-                border:1px solid #3B87FD; 
-                box-shadow: 0 0 3px #AAAAAA; 
-            }*/
 }
 main .box_form .form_input label,
 main .box_form .form_input input,
@@ -219,15 +223,15 @@ main .box_form .form_input select {
   vertical-align: middle;
   font-size: 1.5em;
 }
-main .box_form .form_input .required {
+main .box_form .form_input input:required {
   background: #FFFFFF url(../img/red_asterix.gif) no-repeat 98% center;
 }
-main .box_form .form_input .invalid {
+main .box_form .form_input input.invalid {
   background: #FFFFFF url(../img/invalid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #d45252;
   border-color: #b03535;
 }
-main .box_form .form_input .valid {
+main .box_form .form_input input.valid {
   background: #FFFFFF url(../img/valid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #5CD053;
   border-color: #28921F;
@@ -252,17 +256,17 @@ main .box_form .form_input .error {
 main .box_form .form_input .visible {
   display: inline-block;
 }
-main .box_form .form_input .no_display {
-  display: none;
-}
 main .box_form .form_input #post_code {
   list-style-image: none;
+  display: none;
+  padding: 0;
+  margin: 0;
 }
 main .box_form .form_input textarea {
   width: 85%;
   height: 100px;
 }
-main .box_form .form_input .submit {
+main .box_form .form_input .send {
   font-size: 1.5em;
   background-color: #68B12F;
   background: gradient(linear, left top, left bottom, from(#68B12F), to(#50911E));
@@ -278,13 +282,17 @@ main .box_form .form_input .submit {
   text-align: center;
   text-shadow: 0 -1px 0 #396715;
 }
-main .box_form .form_input .submit:hover {
+main .box_form .form_input .send:hover {
   opacity: .85;
   cursor: pointer;
 }
-main .box_form .form_input .submit:active {
+main .box_form .form_input .send:active {
   border: 1px solid #20911E;
   box-shadow: 0 0 10px 5px #356b0b inset;
+}
+main .box_form .no_display {
+  display: none;
+  list-style: none;
 }
 validation-bubble-message {
   padding: 1em;
