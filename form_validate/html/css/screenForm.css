@@ -214,6 +214,23 @@ main .box_form .form_input label {
   display: inline-block;
   width: 39%;
 }
+main .box_form .form_input input::-webkit-input-placeholder {
+  color: #0c36cd;
+  font-size: 0.7em;
+}
+main .box_form .form_input input::-moz-placeholder {
+  color: #0c36cd;
+  font-size: 0.7em;
+}
+main .box_form .form_input input::-o-placeholder {
+  /* Older versions of Firefox */
+  color: #0c36cd;
+  font-size: 0.7em;
+}
+main .box_form .form_input input:-ms-input-placeholder {
+  color: #0c36cd;
+  font-size: 0.7em;
+}
 main .box_form .form_input input,
 main .box_form .form_input textarea,
 main .box_form .form_input select {
@@ -230,11 +247,13 @@ main .box_form .form_input input.invalid {
   background: #FFFFFF url(../img/invalid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #d45252;
   border-color: #b03535;
+  color: black;
 }
 main .box_form .form_input input.valid {
   background: #FFFFFF url(../img/valid.png) no-repeat 98% center;
   box-shadow: 0 0 5px #5CD053;
   border-color: #28921F;
+  color: black;
 }
 main .box_form .form_input #required {
   display: inline-block;

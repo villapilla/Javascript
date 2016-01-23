@@ -215,6 +215,22 @@ main {
                 width: 39%;
 
             }
+            input::-webkit-input-placeholder {
+                color: @azul_hardware;
+                font-size: 0.7em;
+            }
+            input::-moz-placeholder {
+                color: @azul_hardware;
+                font-size: 0.7em;
+            }
+            input::-o-placeholder {   /* Older versions of Firefox */
+                color: @azul_hardware;
+                font-size: 0.7em;
+            }
+            input:-ms-input-placeholder { 
+                color: @azul_hardware;
+                font-size: 0.7em;
+            }
             input, textarea, select {
                 box-shadow: 0px 0px 3px #CCCCCC, 0 10px 15px #EEEEEE inset;
                 border-radius:2px;
@@ -222,6 +238,7 @@ main {
                 vertical-align: middle;
                 font-size: 1.5em;
             }
+            
             input:required {
                 background: #FFFFFF url(../img/red_asterix.gif) no-repeat 98% center;
             }
@@ -229,11 +246,13 @@ main {
                 background: #FFFFFF url(../img/invalid.png) no-repeat 98% center;
                 box-shadow: 0 0 5px #d45252;
                 border-color: #b03535;
+                color: black;
             }
             input.valid {
                 background: #FFFFFF url(../img/valid.png) no-repeat 98% center;
                 box-shadow: 0 0 5px #5CD053;
                 border-color: #28921F;
+                color: black;
             }
             #required{
                 display: inline-block;
