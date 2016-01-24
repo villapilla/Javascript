@@ -11,6 +11,19 @@ function randomString(numChar) {
         return x + String.fromCharCode(97 + Math.floor(Math.random()*26));
     }, "").toString();
 }
+
+function createString(json) {
+    return "{\n\tname : " + "\"" + json.name_and_last + "\"," +
+            "\n\temail : " + "\"" + json.email + "\"," +
+            "\n\tpassword : " + "\"" + json.password + "\"," +
+            "\n\turl : " + "\"" + json.URL + "\"," +
+            "\n\taddress : " + "\"" + json.address + "\"," +
+            "\n\tcountry : " + "\"" + json.country + "\"," +
+            "\n\tpost-code : " + "\"" + json.post_code + "\"," +
+            "\n\tcomments : " + "\"" + json.comments + "\"" +       
+            "\n}";
+
+}
 function createData(content) {
     var date = new Date(),
         extension = ".json",
@@ -20,14 +33,14 @@ function createData(content) {
         if(err) {
             return console.log(err);
         } else {
-            console.log("The file" + fileName + "was open!");
+            //console.log("The file " + fileName + " was open!");
         }
     });
     fs.writeFile("../cgi-bin/folder/" + fileName, content, function(err) {
         if(err) {
             return console.log(err);
         } else {
-            console.log("The file was saved!");   
+            console.log("The file was saved!");
         }
     });
 }
@@ -56,7 +69,7 @@ function readData(req, res, type, file) {
             res.writeHead(200, {"Content-Type": type, 'Content-Length':data.length});
             res.write(data);
             res.end();
-        }); 
+        });
     }
 }
 //For all your static (js/css/images/etc.) set the directory name (relative path).
@@ -64,9 +77,8 @@ dispatcher.setStatic('../html');
 //A sample GET request    
 dispatcher.onGet("/", function(req, res) {
     var date = new Date();
-    console.log("../html" + req.url);
     fs.readFile("../html/index.html", function (err, data){
-        res.writeHead(200, 
+        res.writeHead(200,
             {
                 "Content-Type": "text/html",
                 "Content-Length":data.length,
@@ -77,12 +89,12 @@ dispatcher.onGet("/", function(req, res) {
     });
 });
 //A sample POST request
-dispatcher.onGet(/.(css|js|jpg|png|gif|ttf)$/, function(req, res) { 
+dispatcher.onGet(/.(css|js|jpg|png|gif|ttf)$/, function(req, res) {
     readData(req, res, mime.lookup(req.url), "../html" + req.url);
 });
 
 dispatcher.onPost("/", function(req, res) {
-    var StringRequest = JSON.stringify(req.params);
+    var StringRequest = createString(req.params);
     createData(StringRequest);
     fs.readFile("../html/index.html", function (err, data){
         res.writeHead(200, {"Content-Type": "text/html", "Content-Length":data.length});
