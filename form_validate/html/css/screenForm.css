@@ -263,6 +263,10 @@ main .box_form .form_input input.valid {
 main .box_form .form_input #required {
   display: inline-block;
 }
+main .box_form .form_input #check_buttom {
+  background: none;
+  box-shadow: none;
+}
 main .box_form .form_input .error {
   position: absolute;
   width: 30%;
@@ -320,13 +324,6 @@ main .box_form .no_display {
 }
 validation-bubble-message {
   padding: 1em;
-}
-#check_buttom::after {
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: #FFFFFF url(../img/invalid.png);
 }
 footer {
   background-color: #0c36cd;

@@ -260,6 +260,10 @@ main {
             #required{
                 display: inline-block;
             }
+            #check_buttom {
+                background: none;
+                box-shadow: none;
+            }
             .error {
                 position: absolute;
                 width: 30%;
@@ -323,13 +327,7 @@ main {
 validation-bubble-message {
     padding: 1em;
 }
-#check_buttom::after {
-                content: "";
-                display: inline-block;
-                width: 16px;
-                height: 16px;
-                background: #FFFFFF url(../img/invalid.png);
-            }
+
 footer {
     background-color:  @azul_hardware;
     li:first-child{
