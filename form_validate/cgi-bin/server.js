@@ -19,10 +19,9 @@ function createString(json) {
             "\n\turl : " + "\"" + json.URL + "\"," +
             "\n\taddress : " + "\"" + json.address + "\"," +
             "\n\tcountry : " + "\"" + json.country + "\"," +
-            "\n\tpost-code : " + "\"" + json.post_code + "\"," +
-            "\n\tcomments : " + "\"" + json.comments + "\"" +       
+            "\n\tpost-code : " + "\"" + json.post + "\"," +
+            "\n\tcomments : " + "\"" + json.comments + "\"" +
             "\n}";
-
 }
 function createData(content) {
     var date = new Date(),
