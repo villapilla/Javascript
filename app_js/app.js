@@ -4,7 +4,6 @@
     unparam: true
 */
 /*globals
-    globals,
     MutationObserver,
     document
 */
@@ -44,6 +43,7 @@ var ns = (function (ns) {
     ns.LIST_BUTTON = "Lista";
     ns.COLOR_BIG = "red";
     ns.COLOR_SMALL = "green";
+    ns.COLOR_INHERIT = "black";
     ns.classContainer = new ClassContainer();
     ns.listItem = generateBox("ul", "listItem");
     ns.tableItem = generateBox("table", "tableItem");
@@ -52,26 +52,17 @@ var ns = (function (ns) {
 function $(id) {
     return document.getElementById(id);
 }
-
-
 ClassContainer.prototype.addClass = function (classValue, text) {
-        this.container.push(new Attribute(classValue, text));
+    this.container.push(new Attribute(classValue, text));
 };
 ClassContainer.prototype.removeClass = function (classValue) {
     this.container = this.container.filter(function (x) {
         return x.classValue !== classValue;
     });
 };
-ClassContainer.prototype.arrayClassUnique = function () {
+ClassContainer.prototype.arrayUnique = function (type) {
     return this.container.map(function (x) {
-        return x.classValue;
-    }).filter(function (element, index, arrayMap) {
-        return arrayMap.indexOf(element) === index;
-    });
-};
-ClassContainer.prototype.arrayTextUnique = function () {
-    return this.container.map(function (x) {
-        return x.text;
+        return x[type];
     }).filter(function (element, index, arrayMap) {
         return arrayMap.indexOf(element) === index;
     });
@@ -81,7 +72,6 @@ ClassContainer.prototype.numberOfObject = function (classValue, text) {
         return (y.classValue === classValue && y.text === text) ? x + 1 : x;
     }, 0);
 };
-
 function generateInput(type, name) {
     var input = document.createElement("input");
     input.id = name;
@@ -104,9 +94,6 @@ function buildSelect(id, optionArray) {
     });
     return select;
 }
-
-
-
 function generateButton(fn, value, id) {
     var button = generateInput("submit", id);
     button.value = value;
@@ -120,29 +107,31 @@ function generateList() {
     });
 }
 function generateTable() {
-    var arrayClass = ns.classContainer.arrayClassUnique(),
-        numberObject,
-        arrayText = ns.classContainer.arrayTextUnique();
+    var arrayClass = ns.classContainer.arrayUnique("classValue"),
+        arrayText = ns.classContainer.arrayUnique("text"),
+        numberObject;
     ns.tableItem = ns.tableItem.cloneNode(false);
-    ns.tableItem.appendChild(generateBox("tr", "class_row"));
-    ns.tableItem.firstChild.appendChild(generateTextElement("td", "", ""));
+    ns.tableItem.appendChild(generateBox("tr", "th_row"));
+    ns.tableItem.firstChild.appendChild(generateTextElement("td", ns.INPUT_VALUE + "\\" + ns.INPUT_CLASS, ""));
     arrayClass.forEach(function (x) {
         ns.tableItem.firstChild.appendChild(generateTextElement("td", x, ""));
     });
-    arrayText.forEach(function (x, y) {
-        ns.tableItem.appendChild(generateBox("tr", "row" + y));
-        ns.tableItem.lastChild.appendChild(generateTextElement("td", x, ""));
-        arrayClass.forEach(function (x) {
-            numberObject = ns.classContainer.numberOfObject(x, this);
+    arrayText.forEach(function (classValue) {
+        ns.tableItem.appendChild(generateBox("tr", ""));
+        ns.tableItem.lastChild.appendChild(generateTextElement("td", classValue, ""));
+        arrayClass.forEach(function (text) {
+            numberObject = ns.classContainer.numberOfObject(text, this);
             ns.tableItem.lastChild.appendChild(generateTextElement("td", numberObject, ""));
             if (numberObject > 2) {
                 ns.tableItem.lastChild.lastChild.style.color = ns.COLOR_BIG;
             } else {
                 if (numberObject < 2) {
                     ns.tableItem.lastChild.lastChild.style.color = ns.COLOR_SMALL;
+                } else {
+                    ns.tableItem.lastChild.lastChild.style.color = ns.COLOR_INHERIT;
                 }
             }
-        }, x);
+        }, classValue);
     });
 }
 function reloadData() {
@@ -163,7 +152,7 @@ function updateState() {
 function reloadSelect() {
     var select = $("select"),
         newSelect;
-    newSelect = buildSelect("select", ns.classContainer.arrayClassUnique());
+    newSelect = buildSelect("select", ns.classContainer.arrayUnique("classValue"));
     $("delete_box").replaceChild(newSelect, select);
 }
 
@@ -177,11 +166,16 @@ function changeResume() {
 }
 function createAtt() {
     var classValue = $(ns.INPUT_CLASS),
-        nameValue = $(ns.INPUT_VALUE);
-    ns.classContainer.addClass(classValue.value, nameValue.value);
-    reloadSelect();
-    nameValue.value = "";
-    classValue.value = "";
+        nameValue = $(ns.INPUT_VALUE),
+        
+    if(classValue.value === "" || classValue.value === "") {
+
+    } else {
+       ns.classContainer.addClass(classValue.value, nameValue.value);
+       reloadSelect();
+       nameValue.value = "";
+       classValue.value = ""; 
+    }
 }
 function deleteClass() {
     ns.classContainer.removeClass($("select").value);
@@ -193,29 +187,30 @@ function createElementIn(parent, id, tag) {
 function createPage() {
     var header = document.getElementsByTagName("header")[0],
         section = document.getElementsByTagName("section")[0],
+        form_box = header.appendChild(generateBox("span", "form_box")),
+        delete_box = header.appendChild(generateBox("span", "delete_box")),
+        change_box = header.appendChild(generateBox("span", "change_box")),
         observer,
         config = {attributes: false, childList: true, characterData: false};
-    header.appendChild(generateBox("span", "form_box"));
-    header.appendChild(generateBox("span", "delete_box"));
-    header.appendChild(generateBox("span", "change_box"));
-    section.appendChild(ns.listItem);
-    //Primer form
     ns.INPUT_TEXT.forEach(function (x) {
-        $("form_box").appendChild(generateTextElement("label", x, ""));
-        $("form_box").appendChild(generateInput("text", x));
+        form_box.appendChild(generateTextElement("label", x, ""));
+        form_box.appendChild(generateInput("text", x));
     });
-    $("form_box").appendChild(generateButton(createAtt, ns.INPUT_BUTTON, "add"));
-    $("delete_box").appendChild(buildSelect("select", ns.classContainer.arrayClassUnique()));
-    $("delete_box").appendChild(generateButton(deleteClass, ns.DELETE_BUTTON, "delete"));
+    form_box.appendChild(generateButton(createAtt, ns.INPUT_BUTTON, "add"));
+    delete_box.appendChild(buildSelect("select",
+        ns.classContainer.arrayUnique("classValue")));
+    delete_box.appendChild(generateButton(deleteClass,
+        ns.DELETE_BUTTON,
+        "delete"));
     observer = new MutationObserver(updateState);
     observer.observe($("delete_box"), config);
-    $("change_box").appendChild(generateButton(changeResume, ns.TABLE_BUTTON, "change"));
+    change_box.appendChild(generateButton(changeResume,
+        ns.TABLE_BUTTON, "change"));
+    section.appendChild(ns.listItem);
 }
-
 window.onload = function () {
     ns.INIT_TAG.forEach(function (x) {
         document.body.appendChild(document.createElement(x));
     });
     createPage();
 };
-
