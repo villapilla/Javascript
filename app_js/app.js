@@ -1,17 +1,14 @@
 /*jslint
-    node: true,
-    browser: true,
-    unparam: true
+    browser:true,
+    node:true,
 */
 /*globals
     MutationObserver,
     document
 */
 'use strict';
-
 var doctype = document.implementation.createDocumentType('html', '', '');
 document.insertBefore(doctype, document.childNodes[0]);
-
 function generateBox(tag, id) {
     var element = document.createElement(tag);
     element.id = id;
@@ -20,13 +17,6 @@ function generateBox(tag, id) {
 function Attribute(classValue, text) {
     this.classValue = classValue;
     this.text = text;
-}
-function generateTextElement(tag, text, classValue) {
-    var element = document.createElement(tag),
-        lineText = document.createTextNode(text);
-    element.appendChild(lineText);
-    element.setAttribute("class", classValue);
-    return element;
 }
 function ClassContainer() {
     this.container = [];
@@ -37,6 +27,7 @@ var ns = (function (ns) {
     ns.INPUT_CLASS = "Clase";
     ns.INPUT_TEXT = [ns.INPUT_CLASS, ns.INPUT_VALUE];
     ns.ERROR = "Rellene ambos campos";
+    ns.TITLE = "Manipulación del DOM";
     ns.INPUT_BUTTON = "Añadir";
     ns.DELETE_BUTTON = "Eliminar";
     ns.TABLE_BUTTON = "Tabla";
@@ -49,9 +40,6 @@ var ns = (function (ns) {
     ns.tableItem = generateBox("table", "tableItem");
     return ns;
 }({}));
-function $(id) {
-    return document.getElementById(id);
-}
 ClassContainer.prototype.addClass = function (classValue, text) {
     this.container.push(new Attribute(classValue, text));
 };
@@ -72,6 +60,16 @@ ClassContainer.prototype.numberOfObject = function (classValue, text) {
         return (y.classValue === classValue && y.text === text) ? x + 1 : x;
     }, 0);
 };
+function $(id) {
+    return document.getElementById(id);
+}
+function generateTextElement(tag, text, classValue) {
+    var element = document.createElement(tag),
+        lineText = document.createTextNode(text);
+    element.appendChild(lineText);
+    element.setAttribute("class", classValue);
+    return element;
+}
 function generateInput(type, name) {
     var input = document.createElement("input");
     input.id = name;
@@ -100,11 +98,32 @@ function generateButton(fn, value, id) {
     button.addEventListener("click", fn, false);
     return button;
 }
+function emptyElement(element, fillElements) {
+    var newElement = element.cloneNode(false),
+        state = fillElements && newElement.appendChild(fillElements);
+    element.parentElement.replaceChild(newElement, element);
+    return state;
+}
 function generateList() {
     ns.listItem = ns.listItem.cloneNode(false);
     ns.classContainer.container.forEach(function (x) {
-        ns.listItem.appendChild(generateTextElement("li", x.text, x.classValue));
+        ns.listItem.appendChild(generateTextElement("li", x.text,
+            x.classValue));
     });
+    return ns.listItem;
+}
+function paintElement(number) {
+    var color;
+    if (number > 2) {
+        color = ns.COLOR_BIG;
+    } else {
+        if (number < 2) {
+            color = ns.COLOR_SMALL;
+        } else {
+            color = ns.COLOR_INHERIT;
+        }
+    }
+    return color;
 }
 function generateTable() {
     var arrayClass = ns.classContainer.arrayUnique("classValue"),
@@ -112,50 +131,37 @@ function generateTable() {
         numberObject;
     ns.tableItem = ns.tableItem.cloneNode(false);
     ns.tableItem.appendChild(generateBox("tr", "th_row"));
-    ns.tableItem.firstChild.appendChild(generateTextElement("td", ns.INPUT_VALUE + "\\" + ns.INPUT_CLASS, ""));
+    ns.tableItem.firstChild.appendChild(generateTextElement("td",
+        ns.INPUT_VALUE + "\\" + ns.INPUT_CLASS, ""));
     arrayClass.forEach(function (x) {
         ns.tableItem.firstChild.appendChild(generateTextElement("td", x, ""));
     });
     arrayText.forEach(function (classValue) {
         ns.tableItem.appendChild(generateBox("tr", ""));
-        ns.tableItem.lastChild.appendChild(generateTextElement("td", classValue, ""));
+        ns.tableItem.lastChild.appendChild(generateTextElement("td",
+            classValue, ""));
         arrayClass.forEach(function (text) {
             numberObject = ns.classContainer.numberOfObject(text, this);
-            ns.tableItem.lastChild.appendChild(generateTextElement("td", numberObject, ""));
-            if (numberObject > 2) {
-                ns.tableItem.lastChild.lastChild.style.color = ns.COLOR_BIG;
-            } else {
-                if (numberObject < 2) {
-                    ns.tableItem.lastChild.lastChild.style.color = ns.COLOR_SMALL;
-                } else {
-                    ns.tableItem.lastChild.lastChild.style.color = ns.COLOR_INHERIT;
-                }
-            }
+            ns.tableItem.lastChild.appendChild(generateTextElement("td",
+                numberObject, "")).style.color = paintElement(numberObject);
         }, classValue);
     });
+    return ns.tableItem;
 }
 function reloadData() {
     var section = document.body.lastChild,
-        newSection = section.cloneNode(false);
-    if ($("change").value === ns.TABLE_BUTTON) {
-        generateList();
-        newSection.appendChild(ns.listItem);
-    } else {
-        generateTable();
-        newSection.appendChild(ns.tableItem);
-    }
-    document.body.replaceChild(newSection, section);
-}
-function updateState() {
-    reloadData();
+        fillElements = ($("change").value === ns.TABLE_BUTTON) ?
+                generateList() :
+                generateTable();
+    emptyElement(section, fillElements);
 }
 function reloadSelect() {
     var select = $("select"),
         newSelect;
+    emptyElement($("error"));
     newSelect = buildSelect("select", ns.classContainer.arrayUnique("classValue"));
     $("delete_box").replaceChild(newSelect, select);
 }
-
 function changeResume() {
     if (this.value === ns.TABLE_BUTTON) {
         this.value = ns.LIST_BUTTON;
@@ -166,23 +172,19 @@ function changeResume() {
 }
 function createAtt() {
     var classValue = $(ns.INPUT_CLASS),
-        nameValue = $(ns.INPUT_VALUE),
-        
-    if(classValue.value === "" || classValue.value === "") {
-
+        nameValue = $(ns.INPUT_VALUE);
+    if (classValue.value === "" || nameValue.value === "") {
+        emptyElement($("error"), document.createTextNode(ns.ERROR));
     } else {
-       ns.classContainer.addClass(classValue.value, nameValue.value);
-       reloadSelect();
-       nameValue.value = "";
-       classValue.value = ""; 
+        ns.classContainer.addClass(classValue.value, nameValue.value);
+        reloadSelect();
+        nameValue.value = "";
+        classValue.value = "";
     }
 }
 function deleteClass() {
     ns.classContainer.removeClass($("select").value);
     reloadSelect();
-}
-function createElementIn(parent, id, tag) {
-    parent.appendChild(generateBox(tag, id));
 }
 function createPage() {
     var header = document.getElementsByTagName("header")[0],
@@ -192,6 +194,9 @@ function createPage() {
         change_box = header.appendChild(generateBox("span", "change_box")),
         observer,
         config = {attributes: false, childList: true, characterData: false};
+    header.insertBefore(generateTextElement("h2", ns.TITLE, "title"),
+        $("form_box"));
+    header.appendChild(generateBox("h4", "error"));
     ns.INPUT_TEXT.forEach(function (x) {
         form_box.appendChild(generateTextElement("label", x, ""));
         form_box.appendChild(generateInput("text", x));
@@ -202,7 +207,7 @@ function createPage() {
     delete_box.appendChild(generateButton(deleteClass,
         ns.DELETE_BUTTON,
         "delete"));
-    observer = new MutationObserver(updateState);
+    observer = new MutationObserver(reloadData);
     observer.observe($("delete_box"), config);
     change_box.appendChild(generateButton(changeResume,
         ns.TABLE_BUTTON, "change"));
